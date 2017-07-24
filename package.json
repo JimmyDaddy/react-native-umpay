@@ -1,0 +1,25 @@
+{
+  "name": "react-native-umpay",
+  "version": "1.0.0",
+  "description": "umpay for rn",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JimmyDaddy/react-native-umpay.git"
+  },
+  "keywords": [
+    "umpay",
+    "react-native",
+    "android",
+    "ios"
+  ],
+  "author": "jimmydaddy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JimmyDaddy/react-native-umpay/issues"
+  },
+  "homepage": "https://github.com/JimmyDaddy/react-native-umpay#readme"
+}
