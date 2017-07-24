@@ -35,7 +35,7 @@
   > * 在`MainApplication.java`中引入`import com.jimmydaddy.umpay.UmpayPackage;
 `添加如下代码
 ```
-@Override
+  @Override
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
         new MainReactPackage(),
