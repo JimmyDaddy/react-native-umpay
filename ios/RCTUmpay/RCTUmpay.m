@@ -1,3 +1,14 @@
+/**
+ * @Author: jimmydaddy
+ * @Date:   2017-07-21 10:07:02
+ * @Email:  heyjimmygo@gmail.com
+ * @Filename: RCTUmpay.m
+ * @Last modified by:   jimmydaddy
+ * @Last modified time: 2017-07-26 05:47:31
+ * @License: GNU General Public License（GPL)
+ * @Copyright: ©2015-2017 www.songxiaocai.com 宋小菜 All Rights Reserved.
+ */
+
 //
 //  RCTUmpay.m
 //  RCTUmpay
@@ -46,25 +57,26 @@ RCT_EXPORT_METHOD(bindCard: (NSString *)idententityCode_key
     _myResolve = resolve;
     _myReject = reject;
     UIViewController *rootViewController =[UIApplication sharedApplication].delegate.window.rootViewController;
-    
+
     UmpayElements* inPayInfo = [[UmpayElements alloc]init];
     [inPayInfo setIdentityCode:idententityCode_key];
     [inPayInfo setEditFlag:editFlag_key];
     [inPayInfo setCardHolder:cardHolder_key];
-    
+
     //注册通知
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(payResult:) name:@"payResult" object: nil];
-    
-    if([Umpay sign:merId_key
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if([Umpay sign:merId_key
                 merCustId:merCustId_key
                 signInfo:signInfo_key
                 shortBankName:shortBankName_key
                 cardType:cardType_key
                 payDic:inPayInfo
                 rootViewController:rootViewController
-        ] == NO) {
-        _myReject(@"1002", @"绑定失败", nil);
-    }
+            ] == NO) {
+            _myReject(@"1002", @"绑定失败", nil);
+        }
+    });
 }
 
 RCT_EXPORT_METHOD(pay:(NSString *)idententityCode_key
@@ -85,16 +97,18 @@ RCT_EXPORT_METHOD(pay:(NSString *)idententityCode_key
     [inPayInfo setIdentityCode:idententityCode_key];
     [inPayInfo setEditFlag:editFlag_key];
     [inPayInfo setCardHolder:cardHolder_key];
-    
-    if([Umpay pay:tradeNo_key
-          merCustId:merCustId_key
-        shortBankName:shortBankName_key
-        cardType:cardType_key
-        payDic:inPayInfo
-        rootViewController:rootViewController] == NO) {
-        _myReject(@"1002", @"绑定失败", nil);
-    }
-    
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if([Umpay pay:tradeNo_key
+            merCustId:merCustId_key
+            shortBankName:shortBankName_key
+             cardType:cardType_key
+               payDic:inPayInfo
+            rootViewController:rootViewController] == NO) {
+            _myReject(@"1002", @"绑定失败", nil);
+        }
+    });
+
 }
 
 
