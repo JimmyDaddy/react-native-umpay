@@ -6,7 +6,7 @@
 * `npm install react-native-umpay`
 * `react-native link`
 * 根据联动优势给出的文档进行配置
-*  Android需要额外配置
+*  Android需要的额外配置
  > * 在`android\settings.gradle`中添加(如果上述`link`命令没做到的话)
  ```
  include 'react-native-umpay'
@@ -43,6 +43,7 @@
     );
   }
   ```
+* IOS需要的额外配置：右键点击你的项目，选择`Add files to XXX`，找到`node_modules`下的`react-native-umpay`在`ios`文件夹里找到`umpLibraryBundle.bundle`,将之添加到你的项目中（如果不添加，在弹出的联动优势页面中将没有图片icon以及样式）
 
 ## 使用
 
