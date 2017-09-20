@@ -23,26 +23,27 @@
     `import org.greenrobot.eventbus.EventBus;`
 
   > * 重写`onActivityResult`如下:
-    ```
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == UmpayModule.REQUEST_CODE){
-            EventBus.getDefault().post(data);
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-    ```
-  > * 在`MainApplication.java`中引入`import com.jimmydaddy.umpay.UmpayPackage;
-`添加如下代码
+  
 ```
-  @Override
-  protected List<ReactPackage> getPackages() {
-    return Arrays.<ReactPackage>asList(
-        new MainReactPackage(),
-        new UmpayPackage()//添加这个
-    );
-  }
-  ```
+@Override
+public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == UmpayModule.REQUEST_CODE){
+        EventBus.getDefault().post(data);
+    }
+    super.onActivityResult(requestCode, resultCode, data);
+}
+```
+    
+  > * 在`MainApplication.java`中引入`import com.jimmydaddy.umpay.UmpayPackage;`添加如下代码
+```
+@Override
+protected List<ReactPackage> getPackages() {
+  return Arrays.<ReactPackage>asList(
+      new MainReactPackage(),
+      new UmpayPackage()//添加这个
+  );
+}
+```
 * IOS需要的额外配置：右键点击你的项目，选择`Add files to XXX`，找到`node_modules`下的`react-native-umpay`在`ios`文件夹里找到`umpLibraryBundle.bundle`,将之添加到你的项目中（如果不添加，在弹出的联动优势页面中将没有图片icon以及样式）
 
 ## 使用
